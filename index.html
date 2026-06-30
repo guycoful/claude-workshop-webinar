@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>סדנת Claude Code — גיא כהן & אסף | וובינר חינמי</title>
+<meta name="description" content="וובינר חינמי: איך הופכים את Claude Code לכלי שבונה לכם פרויקטים מקצה לקצה. עם גיא כהן ואסף." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --orange:#E8743B; --orange-d:#C85A28; --amber:#F4B740; --yellow:#FCE96A;
+    --ink:#2A2018; --ink-soft:#5C5048; --cream:#FDF6EC; --card:#FFFFFF;
+    --green:#2E7D52; --red:#D2553B; --line:#EFE2D2;
+  }
+  body{font-family:'Heebo',sans-serif;color:var(--ink);direction:rtl;line-height:1.7;
+    background:radial-gradient(1200px 600px at 80% -10%,#FCE3C9 0%,transparent 60%),
+               radial-gradient(1000px 500px at 0% 5%,#FAD7C2 0%,transparent 55%),
+               var(--cream);}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px}
+  .btn{display:inline-block;background:var(--orange);color:#fff;font-weight:800;font-size:19px;
+    padding:16px 38px;border-radius:14px;text-decoration:none;box-shadow:0 10px 24px rgba(232,116,59,.35);
+    transition:transform .15s,box-shadow .15s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(232,116,59,.45)}
+  .hl{background:var(--yellow);padding:0 8px;border-radius:6px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* top banner */
+  .topbar{background:var(--ink);color:#fff;text-align:center;font-weight:600;font-size:15px;padding:11px 16px}
+  .topbar b{color:var(--amber)}
+
+  /* hero */
+  .hero{text-align:center;padding:64px 0 54px}
+  .pill{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--orange-d);
+    font-weight:700;font-size:14px;padding:7px 16px;border-radius:999px;margin-bottom:26px}
+  .hero h1{font-size:clamp(32px,5.4vw,54px);font-weight:900;line-height:1.18;letter-spacing:-.5px;margin-bottom:22px}
+  .hero p.sub{font-size:clamp(17px,2.3vw,21px);color:var(--ink-soft);max-width:680px;margin:0 auto 34px}
+  .hero .meta{margin-top:22px;color:var(--ink-soft);font-weight:600;font-size:15px}
+
+  section{padding:56px 0}
+  h2.sec{font-size:clamp(26px,3.6vw,38px);font-weight:900;text-align:center;margin-bottom:14px;letter-spacing:-.4px}
+  .sec-sub{text-align:center;color:var(--ink-soft);max-width:620px;margin:0 auto 40px;font-size:17px}
+
+  .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 26px;
+    box-shadow:0 6px 18px rgba(0,0,0,.03)}
+  .card .ico{width:46px;height:46px;border-radius:12px;background:#FCEFE2;display:flex;align-items:center;
+    justify-content:center;font-size:24px;margin-bottom:16px}
+  .card h3{font-size:20px;font-weight:800;margin-bottom:8px}
+  .card p{color:var(--ink-soft);font-size:16px}
+
+  /* before/after */
+  .ba{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:880px;margin:0 auto}
+  .ba-col{border-radius:18px;padding:26px}
+  .ba-col.before{background:#FBEDEA;border:1px solid #F2D2CB}
+  .ba-col.after{background:#E9F5EE;border:1px solid #CFE9DA}
+  .ba-col h3{font-size:20px;font-weight:800;margin-bottom:16px}
+  .ba-col ul{list-style:none}
+  .ba-col li{display:flex;gap:10px;align-items:flex-start;margin-bottom:13px;font-size:16px;color:var(--ink)}
+  .ba-col .mark{font-weight:900;flex:0 0 auto}
+  .before .mark{color:var(--red)} .after .mark{color:var(--green)}
+
+  /* instructors */
+  .hosts{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:880px;margin:0 auto}
+  .host{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;text-align:center}
+  .host .av{width:84px;height:84px;border-radius:50%;background:linear-gradient(135deg,var(--amber),var(--orange));
+    margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:30px}
+  .host h3{font-size:21px;font-weight:800;margin-bottom:4px}
+  .host .role{color:var(--orange-d);font-weight:700;font-size:14px;margin-bottom:10px}
+  .host p{color:var(--ink-soft);font-size:15px}
+
+  /* scarcity */
+  .scar{background:linear-gradient(135deg,#2A2018,#3A2A1E);color:#fff;text-align:center;border-radius:22px;
+    padding:46px 28px;max-width:820px;margin:0 auto}
+  .scar .star{color:var(--amber);font-weight:800;letter-spacing:2px;font-size:14px;margin-bottom:14px}
+  .scar h2{font-size:clamp(24px,3.4vw,34px);font-weight:900;margin-bottom:14px}
+  .scar p{color:#E7D9C9;max-width:560px;margin:0 auto;font-size:17px}
+
+  /* live not recorded */
+  .live{max-width:760px;margin:0 auto;text-align:center}
+  .live h2{margin-bottom:16px}
+  .live p{color:var(--ink-soft);font-size:18px}
+
+  /* final cta */
+  .final{text-align:center}
+  .final .box{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:46px 28px;max-width:720px;margin:0 auto;
+    box-shadow:0 12px 30px rgba(0,0,0,.05)}
+  .final h2{margin-bottom:10px}
+  .final .details{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;color:var(--ink-soft);
+    font-weight:600;margin:18px 0 28px;font-size:15px}
+  .final .details span b{color:var(--ink)}
+  footer{text-align:center;color:var(--ink-soft);font-size:13px;padding:34px 16px 50px}
+
+  @media (max-width:760px){
+    .cards,.ba-grid,.hosts{grid-template-columns:1fr}
+    section{padding:42px 0}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">🗓️ וובינר חינמי בזום · <b>[תאריך]</b> בשעה <b>[שעה]</b> · מספר המקומות מוגבל</div>
+
+  <header class="hero">
+    <div class="wrap">
+      <span class="pill">✦ עד היום רק בתוך חברות · עכשיו פתוח לקהילה ✦</span>
+      <h1>תפסיקו להתבאס ש-Claude Code לא באמת משנה לכם את העבודה.<br />
+        <span class="hl">תתחילו לבנות איתו כמו מקצוענים.</span></h1>
+      <p class="sub">וובינר חינמי וחי עם גיא כהן ואסף — איך הופכים את Claude מ"עוזר שמשיב" לכלי שבונה לכם פרויקטים שלמים מקצה לקצה, בשיטה שאפשר לחזור עליה תמיד.</p>
+      <a href="#register" class="btn">אני רוצה להצטרף לוובינר</a>
+      <div class="meta">חינמי · בזום · 90 דקות · הקלטה תישלח לנרשמים</div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap">
+      <h2 class="sec">מה נעשה יחד בוובינר</h2>
+      <p class="sec-sub">לא תיאוריה. תצאו עם שיטה ועם הבנה מה לעשות כבר מחר בבוקר.</p>
+      <div class="cards">
+        <div class="card"><div class="ico">🏗️</div><h3>איך בונים תשתית נכונה ל-Claude</h3><p>איך ניגשים לפרויקט, מתכננים ומאפיינים, ובעיקר — איך משמרים קונטקסט לאורך כל הדרך כך ש-Claude תמיד מכיר את הכל.</p></div>
+        <div class="card"><div class="ico">🎯</div><h3>3 הפעולות שמפרידות בין מי שמסיים פרויקטים לכולם</h3><p>מתוך עבודה עם עשרות חברות — דפוס ברור. אלה שמסיימים עושים 3 דברים שאחרים לא. נלמד בדיוק מה הם.</p></div>
+        <div class="card"><div class="ico">🤖</div><h3>להפוך את Claude לצוות עוזרים שרץ במקביל</h3><p>Skills, MCP וחיבורים לכלים — כך ש-Claude יבצע בפועל, לפי הכללים שלכם, בלי לחזור על אותה הנחיה כל פעם.</p></div>
+        <div class="card"><div class="ico">🚀</div><h3>מרעיון לפרויקט עובד בידיים</h3><p>מאחדים הכול לתהליך אחד שאפשר לחזור עליו. יוצאים עם משהו שעובד, לא רק עם הבנה תיאורטית.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ba">
+    <div class="wrap">
+      <h2 class="sec">מה משתנה בפועל</h2>
+      <div class="ba-grid">
+        <div class="ba-col before">
+          <h3>לפני</h3>
+          <ul>
+            <li><span class="mark">✗</span> מנסים לבנות, Claude שוכח את ההקשר באמצע ומחזיר קוד שבור</li>
+            <li><span class="mark">✗</span> כל פרויקט נשאר בחצי הדרך כי אין שיטה שמחזיקה</li>
+            <li><span class="mark">✗</span> Claude זמין, אבל עדיין לא שינה כלום בשגרת העבודה</li>
+          </ul>
+        </div>
+        <div class="ba-col after">
+          <h3>אחרי</h3>
+          <ul>
+            <li><span class="mark">✓</span> שיטה שמחזיקה מהרעיון ועד פרויקט עובד בידיים</li>
+            <li><span class="mark">✓</span> תהליך ברור שחוזרים עליו על כל פרויקט שמגיע</li>
+            <li><span class="mark">✓</span> יודעים בדיוק מתי ואיך לשלב Claude בכל משימה</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 class="sec">שני מנחים, לא אחד</h2>
+      <p class="sec-sub">שני אנשים שחיים את זה בפועל — ולא נותנים לאף אחד להישאר תקוע.</p>
+      <div class="hosts">
+        <div class="host"><div class="av">ג</div><h3>גיא כהן</h3><div class="role">מוביל חדשנות AI · בונה סוכנים</div><p>בונה סוכני AI ואוטומציות לעסקים, ומלמד איך לחבר בין בינה מלאכותית לעבודה אמיתית — בגובה העיניים.</p></div>
+        <div class="host"><div class="av">א</div><h3>אסף</h3><div class="role">[תפקיד של אסף]</div><p>[משפט-שניים על אסף — רקע, ניסיון הדרכה, ולמה הוא הבן אדם הנכון להעביר את זה.]</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ba">
+    <div class="wrap">
+      <div class="scar">
+        <div class="star">✦ עד עכשיו, לחברות בלבד ✦</div>
+        <h2>את הסדנה הזו העברנו עד היום רק בתוך חברות</h2>
+        <p>בקבוצות סגורות, בלי שום פרסום. זו הפעם הראשונה שהיא נפתחת לקהילה — וזו ההצצה הראשונה אליה.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap live">
+      <h2 class="sec">זה לא וובינר מוקלט שנגמר בלי שעשיתם כלום</h2>
+      <p>בהקלטה אתם לבד. אין מי שרואה איפה נתקעתם ואין מי שעונה בזמן אמת. פה אנחנו איתכם — חיים, שומעים, מכוונים, ולא נותנים לאף אחד להישאר תקוע. תגיעו עם שאלות אמיתיות מהשטח, ותצאו עם כיוון ברור.</p>
+    </div>
+  </section>
+
+  <section class="final" id="register">
+    <div class="wrap">
+      <div class="box">
+        <h2 class="sec">שומרים מקום בוובינר</h2>
+        <div class="details">
+          <span>📅 <b>[תאריך]</b></span>
+          <span>🕗 <b>[שעה]</b></span>
+          <span>💻 בזום · 90 דק׳</span>
+          <span>🎁 חינמי</span>
+        </div>
+        <a href="[קישור הרשמה]" class="btn">אני רוצה להצטרף לוובינר</a>
+        <p style="margin-top:16px;color:var(--ink-soft);font-size:14px">הקלטה תישלח לכל מי שנרשם, גם אם לא תוכלו להגיע בשידור חי.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 גיא כהן & אסף · סדנת Claude Code</footer>
+
+</body>
+</html>
