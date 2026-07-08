@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>וובינר Claude Code | גיא כהן</title>
-<meta name="description" content="וובינר חי וחינמי עם גיא כהן ואסף ירון: מ'לשחק עם AI' ל'לבנות סוכן שעושה עבודה אמיתית', עם Claude Code. 8.7.2026, 19:30." />
+<meta name="description" content="וובינר חי וחינמי עם גיא כהן ואסף ירון: מ'לשחק עם AI' ל'לבנות סוכן שעושה עבודה אמיתית', עם Claude Code. 15.7.2026, 19:30." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -124,11 +124,31 @@
     section{padding:48px 0}
     .hero{padding:44px 0 40px}
   }
+  /* register form */
+  .regform{max-width:440px;margin:6px auto 0;text-align:right}
+  .regform label{display:block;font-weight:600;font-size:13.5px;color:var(--g300);margin:12px 0 6px}
+  .regform input,.regform select{width:100%;padding:13px 15px;border:1px solid var(--bd-h);border-radius:11px;
+    font-family:inherit;font-size:15px;color:var(--white);background:var(--navy-d);transition:border-color .15s}
+  .regform input::placeholder{color:var(--g500)}
+  .regform input:focus,.regform select:focus{outline:none;border-color:var(--blue)}
+  .regform option{color:#111}
+  .regform .consent{display:flex;gap:10px;align-items:flex-start;margin:16px 2px 4px;font-size:13px;color:var(--g400);text-align:right}
+  .regform .consent input{width:auto;margin-top:3px}
+  .regform button{width:100%;margin-top:18px;background:var(--blue);color:#fff;border:0;border-radius:12px;
+    padding:16px;font-size:17px;font-weight:800;font-family:inherit;cursor:pointer;animation:glow 2.6s ease-in-out infinite;transition:transform .15s}
+  .regform button:hover{transform:scale(1.02)}
+  .regform button:disabled{opacity:.6;cursor:default;animation:none}
+  .regform .status{margin-top:12px;font-size:14px;font-weight:600;min-height:18px;color:#FCA5A5}
+  #reg-done{display:none;text-align:center;padding:14px 6px}
+  #reg-done .big{font-size:44px}
+  #reg-done h3{color:#fff;font-size:22px;margin:8px 0 6px}
+  #reg-done p{color:var(--g300);font-size:15px}
+
 </style>
 </head>
 <body>
 
-  <div class="topbar">🗓️ וובינר חי וחינמי · <b>8.7.2026</b> בשעה <b>19:30</b> · בזום · מקומות מוגבלים</div>
+  <div class="topbar">🗓️ וובינר חי וחינמי · <b>15.7.2026</b> בשעה <b>19:30</b> · בזום · מקומות מוגבלים</div>
 
   <header class="hero">
     <div class="wrap hero-grid">
@@ -237,12 +257,40 @@
         <h2 class="sec">שומרים מקום</h2>
         <div class="divider"></div>
         <div class="details">
-          <span>📅 <b>8.7.2026</b></span>
+          <span>📅 <b>15.7.2026</b></span>
           <span>🕗 <b>19:30</b></span>
           <span>💻 בזום · 90 דק׳</span>
           <span>🎁 <b>חינמי</b></span>
         </div>
-        <a href="[קישור הרשמה]" class="btn">שמרו לי מקום בוובינר</a>
+        <div id="reg-formwrap">
+          <form class="regform" id="reg-form" novalidate>
+            <label>שם מלא *</label>
+            <input id="reg-name" name="fullName" autocomplete="name" placeholder="השם שלך" required />
+            <label>אימייל *</label>
+            <input id="reg-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required />
+            <label>טלפון (וואטסאפ)</label>
+            <input id="reg-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="050-0000000" />
+            <label>כמה כבר השתמשת ב-AI / Claude Code?</label>
+            <select id="reg-level" name="level">
+              <option value="">בחר/י…</option>
+              <option>עוד לא התחלתי</option>
+              <option>קצת - ברמת צ׳אט</option>
+              <option>בינוני - כלים ואוטומציות</option>
+              <option>הרבה - בונה בעצמי</option>
+            </select>
+            <div class="consent">
+              <input type="checkbox" id="reg-consent" />
+              <span>אני מאשר/ת קבלת פרטי ההתחברות והעדכונים על הוובינר במייל ובוואטסאפ.</span>
+            </div>
+            <button type="submit" id="reg-btn">שמרו לי מקום בוובינר</button>
+            <div class="status" id="reg-status"></div>
+          </form>
+        </div>
+        <div id="reg-done">
+          <div class="big">🎉</div>
+          <h3>נרשמתם בהצלחה!</h3>
+          <p>שלחנו לכם מייל אישור. קישור הזום וההקלטה יישלחו אליכם.<br />בדקו גם בתיקיית הספאם.</p>
+        </div>
         <p style="margin-top:16px;color:var(--g400);font-size:14px">לא יכולים להגיע בשידור חי? הירשמו בכל זאת - נשלח את ההקלטה.</p>
       </div>
     </div>
@@ -250,5 +298,43 @@
 
   <footer>© 2026 גיא כהן ✕ אסף ירון · וובינר Claude Code</footer>
 
+<script>
+(function(){
+  var WEBHOOK="https://script.google.com/macros/s/AKfycby69gantN5HouWjKvIwDDN0m-GIFTNxGsBTvrt_NpaV1ETiI80dX1Gl4laMV5p1Lezr/exec";
+  var f=document.getElementById("reg-form");
+  var status=document.getElementById("reg-status");
+  var btn=document.getElementById("reg-btn");
+  if(!f) return;
+  f.addEventListener("submit",function(e){
+    e.preventDefault();
+    var payload={
+      fullName:document.getElementById("reg-name").value,
+      email:document.getElementById("reg-email").value,
+      phone:document.getElementById("reg-phone").value,
+      level:document.getElementById("reg-level").value,
+      consent:document.getElementById("reg-consent").checked,
+      pageUrl:location.href,
+      submittedAt:new Date().toISOString()
+    };
+    if(!payload.fullName.trim()){status.textContent="צריך למלא שם מלא.";return;}
+    if(!payload.email.trim()||payload.email.indexOf("@")<0){status.textContent="צריך למלא אימייל תקין.";return;}
+    if(!payload.consent){status.textContent="צריך לאשר קבלת פרטי ההתחברות.";return;}
+    status.textContent="";
+    btn.disabled=true;btn.textContent="שולחים...";
+    fetch(WEBHOOK,{
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify(payload)
+    }).then(function(){
+      document.getElementById("reg-formwrap").style.display="none";
+      document.getElementById("reg-done").style.display="block";
+    }).catch(function(){
+      status.textContent="השליחה נכשלה, נסו שוב.";
+      btn.disabled=false;btn.textContent="שמרו לי מקום בוובינר";
+    });
+  });
+})();
+</script>
 </body>
 </html>
