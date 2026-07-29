@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הסיסטם של גיל מאיר</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800;900&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --navy-d:#0A1F44; --navy-l:#102B5B; --blue:#0052CC; --p7:#7C3AED; --p5:#8B5CF6;
+    --b5:#3B82F6; --sky:#8FB0FF; --white:#fff; --g3:#D1D5DB; --g4:#9CA3AF;
+  }
+  html{font-size:100%;}
+  body{
+    font-family:'Heebo',sans-serif;direction:rtl;background:var(--navy-d);color:var(--white);
+    font-size:1.0625rem;line-height:1.7;min-height:100vh;position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;pointer-events:none;
+    background:radial-gradient(circle at 12% 8%, rgba(124,58,237,.30) 0%, rgba(0,82,204,.10) 42%, transparent 68%);
+  }
+  body::after{
+    content:'';position:fixed;top:0;bottom:0;right:0;width:10px;
+    background:linear-gradient(180deg,var(--blue),var(--p7));
+  }
+  .wrap{position:relative;z-index:2;max-width:44rem;margin:0 auto;padding:3rem 1.5rem 4rem;}
+
+  .kicker{
+    font-size:.9375rem;font-weight:800;letter-spacing:.1em;margin-bottom:1rem;
+    background:linear-gradient(135deg,var(--b5),var(--p5));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  h1{font-size:clamp(2.1rem,7vw,3.1rem);font-weight:900;line-height:1.12;letter-spacing:-.02em;}
+  h1 .fade{color:var(--sky);}
+  .sub{font-size:1.1875rem;font-weight:500;color:var(--g3);margin-top:1.1rem;max-width:34rem;}
+
+  ul.what{list-style:none;margin:2rem 0 0;display:flex;flex-direction:column;gap:.75rem;}
+  ul.what li{font-size:1.0625rem;font-weight:600;display:flex;gap:.7rem;align-items:flex-start;}
+  ul.what li::before{content:'';flex:none;width:.55rem;height:.55rem;margin-top:.6rem;border-radius:50%;
+    background:linear-gradient(135deg,var(--b5),var(--p5));}
+
+  .card{
+    margin-top:2.5rem;background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.14);
+    border-radius:1rem;padding:1.75rem 1.5rem;
+  }
+  .card h2{font-size:1.4rem;font-weight:900;margin-bottom:1.1rem;}
+  label{display:block;font-size:.9375rem;font-weight:700;color:var(--g3);margin:1rem 0 .4rem;}
+  input{
+    width:100%;padding:.85rem .9rem;border-radius:.7rem;border:1.5px solid rgba(255,255,255,.22);
+    background:rgba(255,255,255,.06);color:var(--white);font-size:1.0625rem;font-family:inherit;
+  }
+  input::placeholder{color:#8195B4;}
+  input:focus-visible,button:focus-visible{outline:3px solid var(--sky);outline-offset:2px;}
+
+  button.send{
+    width:100%;margin-top:1.5rem;padding:1.05rem;border:none;border-radius:.8rem;
+    background:linear-gradient(135deg,var(--blue),var(--p7));color:#fff;
+    font-family:inherit;font-size:1.15rem;font-weight:800;cursor:pointer;min-height:3.4rem;
+  }
+  button.send:disabled{opacity:.5;cursor:not-allowed;}
+  .msg{margin-top:.9rem;text-align:center;font-size:1rem;min-height:1.4rem;font-weight:700;}
+  .msg.err{color:#FCA5A5;}
+  .fine{margin-top:1rem;font-size:.875rem;color:var(--g4);font-weight:500;text-align:center;}
+
+  .done{display:none;text-align:center;padding:3.5rem 1rem;}
+  .done h2{font-size:1.9rem;font-weight:900;margin-bottom:.8rem;}
+  .done p{font-size:1.0625rem;color:var(--g3);margin-bottom:.5rem;}
+  .done a{color:var(--sky);font-weight:800;}
+
+  footer{margin-top:3rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.12);
+    font-size:.875rem;color:var(--g4);font-weight:600;}
+  footer a{color:var(--sky);}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app">
+  <div class="kicker">מכירות · מהשטח</div>
+  <h1>הסיסטם<br><span class="fade">של גיל מאיר</span></h1>
+  <p class="sub">שיחת מכירה אחת, מהמשפט הראשון ועד הפולואפ. כל שלב, מה שואלים בו, ומה בדיוק אומרים.</p>
+
+  <ul class="what">
+    <li>מפת השיחה בשישה שלבים, ואיפה בדיוק נופלות רוב העסקאות</li>
+    <li>המשפטים המדויקים לכל שלב, מוכנים לשימוש</li>
+    <li>איך מנטרלים "אני צריך להתייעץ" כבר בדקה העשירית</li>
+    <li>מה עונים על "יקר לי" ועל "אני צריך לחשוב"</li>
+    <li>עמוד אחד עם עשרת המשפטים, להדפיס ולתלות</li>
+  </ul>
+
+  <div class="card">
+    <h2>קבלו את הסיסטם למייל</h2>
+    <form id="form" novalidate>
+      <label for="name">שם מלא</label>
+      <input id="name" type="text" autocomplete="name" placeholder="איך קוראים לך" required>
+
+      <label for="phone">טלפון</label>
+      <input id="phone" type="tel" autocomplete="tel" placeholder="050-0000000" required>
+
+      <label for="email">דוא״ל</label>
+      <input id="email" type="email" autocomplete="email" placeholder="name@example.com" required>
+
+      <button class="send" id="send" type="submit">שלחו לי את הסיסטם</button>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      <p class="fine">המסמך נשלח מיד למייל שהזנתם. בלי ספאם ובלי רשימות תפוצה.</p>
+    </form>
+  </div>
+
+  <footer>
+    ריכוז ועריכה: גיא כהן · מבוסס על מתודולוגיית המכירות של גיל מאיר<br>
+    <a href="https://salesteam.co.il" target="_blank" rel="noopener">salesteam.co.il</a>
+  </footer>
+</div>
+
+<div class="wrap done" id="done">
+  <h1 style="font-size:2.2rem;">תודה 🙌</h1>
+  <p style="margin-top:1rem;">הפרטים התקבלו, <b>והסיסטם נשלח עכשיו למייל שלך.</b></p>
+  <p>אם הוא לא מגיע תוך דקה, תבדוק בקידומי מכירות או בספאם.</p>
+  <p style="margin-top:1.5rem;">בינתיים אפשר להכיר את גיל:<br>
+    <a href="https://salesteam.co.il" target="_blank" rel="noopener">salesteam.co.il</a></p>
+</div>
+
+<script>
+var ENDPOINT = "https://script.google.com/macros/s/AKfycbweB8lm6Rl8OlUkR8YHJcWFXPUwqXYXl9QdIvjoa_pTig8myxDjjG36cAa0kBD9RG92Dw/exec";
+var ids=['name','phone','email'];
+function valid(){
+  var ok=true;
+  ids.forEach(function(i){ if(!document.getElementById(i).value.trim()) ok=false; });
+  if(document.getElementById('email').value.indexOf('@')<1) ok=false;
+  return ok;
+}
+document.getElementById('form').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var b=document.getElementById('send'), m=document.getElementById('msg');
+  if(!valid()){ m.className='msg err'; m.textContent='צריך שם, טלפון ומייל תקין.'; return; }
+  b.disabled=true; m.className='msg'; m.textContent='שולח...';
+  var data={
+    name:document.getElementById('name').value.trim(),
+    phone:document.getElementById('phone').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    src:'לינקדאין'
+  };
+  fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(data)})
+    .then(function(){
+      document.getElementById('app').style.display='none';
+      document.getElementById('done').style.display='block';
+      window.scrollTo(0,0);
+    })
+    .catch(function(){
+      m.className='msg err'; m.textContent='שגיאה בשליחה. נסו שוב.'; b.disabled=false;
+    });
+});
+</script>
+</body>
+</html>
