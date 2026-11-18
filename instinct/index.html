@@ -78,7 +78,8 @@ a{color:var(--mint-dark)}
 .tab .num{font-size:.75rem;font-weight:700;width:20px;height:20px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink)}
 .tab[aria-selected="true"]{background:var(--deep);color:var(--deep-ink)}
 .tab[aria-selected="true"] .num{background:var(--mint);color:#062014}
-.tab:hover{color:var(--ink)}
+@media (hover:hover){.tab:not([aria-selected="true"]):hover{color:var(--ink)}}
+.tab[aria-selected="true"],.tab[aria-selected="true"]:hover,.tab[aria-selected="true"]:focus{color:var(--deep-ink)}
 
 main{max-width:1120px;margin:0 auto;padding-block:34px 70px}
 .panel{display:none;animation:in .25s ease}
