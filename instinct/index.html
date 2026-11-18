@@ -414,7 +414,7 @@ const GROUP_URL = ""; // קישור לקבוצת ההזמנות
     tabs.querySelectorAll('.tab').forEach((t,j)=>{t.setAttribute('aria-selected',j===i);t.tabIndex=j===i?0:-1;if(j===i)t.scrollIntoView({block:'nearest',inline:'center'})});
     document.getElementById('prev').hidden=i===0;document.getElementById('next').hidden=i===panels.length-1;
     if(push){try{history.replaceState(null,'','#'+panels[i].id)}catch(_){location.hash=panels[i].id}
-      document.querySelector('.tabbar').scrollIntoView({behavior:'smooth'})}}
+      const m=document.getElementById('main');const tb=document.querySelector('.tabbar').offsetHeight;const y=Math.max(0,m.getBoundingClientRect().top+window.scrollY-tb);window.scrollTo({top:y,behavior:'instant'})}}
   tabs.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){const d=e.key==='ArrowLeft'?1:-1;const n=(cur+d+panels.length)%panels.length;show(panels[n].id,true);tabs.children[n].focus()}});
   document.getElementById('prev').onclick=()=>show(panels[cur-1].id,true);
   document.getElementById('next').onclick=()=>show(panels[cur+1].id,true);
