@@ -163,6 +163,19 @@ details .in p{margin:0}
 .rule-list li{counter-increment:r;display:grid;grid-template-columns:40px 1fr;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
 .rule-list li::before{content:counter(r);width:34px;height:34px;border-radius:10px;background:var(--deep);color:var(--mint);display:grid;place-items:center;font-weight:900}
 .rule-list b{display:block}
+.askbar{display:grid;gap:12px;margin-bottom:18px;max-width:860px}
+.askbar input{font:inherit;font-size:1.05rem;padding:14px 16px;border-radius:14px;border:2px solid var(--line);background:var(--paper);color:var(--ink);width:100%}
+.askbar input:focus{border-color:var(--mint-dark);outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.qa{display:grid;gap:10px;max-width:860px}
+.qa details .in p{margin:0 0 8px}
+.qa summary .kk{font-size:.75rem;font-weight:700;border-radius:999px;padding:2px 9px;margin-inline-start:8px;white-space:nowrap}
+.k-allow{background:color-mix(in srgb,var(--mint) 22%,var(--paper));color:var(--mint-dark)}
+.k-good{background:var(--sky-soft);color:var(--sky)}
+.k-no{background:var(--rose-soft);color:var(--rose)}
+.k-na{background:var(--amber-soft);color:var(--amber)}
+.copyagent{margin-top:26px;max-width:860px}
+.agentpre{white-space:pre-wrap;font:inherit;font-size:.9rem;background:var(--chat-bg);padding:12px;border-radius:10px;max-height:360px;overflow:auto;margin:0}
 footer{max-width:1120px;margin:0 auto;padding-block:20px 50px;color:var(--muted);font-size:.88rem;border-top:1px solid var(--line)}
 
 @media (max-width:860px){
@@ -302,7 +315,7 @@ footer{max-width:1120px;margin:0 auto;padding-block:20px 50px;color:var(--muted)
 <!-- 5 -->
 <section class="panel" id="first" data-title="הודעה ראשונה" role="tabpanel">
   <div class="panel-head"><span class="k">שלב 5 · ההודעה הראשונה</span><h2>שורת הבלם, לפני כל משימה</h2>
-    <p>בתנאי השימוש כתוב שמה שהוא מתחייב בשמכם מחייב אתכם. אז אני ממליץ שזו תהיה ההודעה הראשונה שלכם.</p></div>
+    <p>בתנאי השימוש כתוב שמה שהוא מתחייב בשמכם מחייב אתכם, ושחובה עליכם לפקח על כל פעולה שלו. אז אני ממליץ שזו תהיה ההודעה הראשונה שלכם.</p></div>
   <div class="chatwall" style="max-width:720px">
     <div class="thread">
       <div class="b me"><span id="brake">לפני כל שליחה, שיחה בשמי, תשלום או התחייבות, תשלח לי טיוטה ותחכה ל"כן". תעדכן אותי רק כשיש תוצאה או חסם.</span><br><button class="cp" data-copy="brake">העתקה</button></div>
@@ -350,21 +363,52 @@ footer{max-width:1120px;margin:0 auto;padding-block:20px 50px;color:var(--muted)
 <!-- 8 -->
 <section class="panel" id="privacy" data-title="פרטיות" role="tabpanel">
   <div class="panel-head"><span class="k">שלב 8 · האותיות הקטנות</span><h2>פרטיות ותנאים, בשפה פשוטה</h2>
-    <p>זה מה שהבנתי מתנאי השימוש וממדיניות הפרטיות בגרסה מ-26.8.2026. אני לא עורך דין, אז מי שזה קריטי לו שיקרא בעצמו.</p></div>
-  <details open><summary>אימון על המידע שלכם</summary><div class="in"><p>כברירת מחדל המידע שלכם משמש לאימון, ואפשר לכבות את זה בהגדרות. הכיבוי עובד רק מכאן והלאה, ומשהו שסומן אצלם לבדיקת בטיחות עדיין יכול להיכנס לאימון.</p></div></details>
-  <details><summary>מה עם המידע מגוגל</summary><div class="in"><p>לפי המדיניות, מה שמגיע דרך ה-API של Google Workspace לא נכנס לאימון ולא לפרסום. זה החיבור היחיד שהם מפרטים ככה, ואת Outlook הם בכלל לא מזכירים.</p></div></details>
-  <details><summary>Vault</summary><div class="in"><p>מה שמכניסים ל-Vault לא נכנס לאימון, אבל הם עדיין מעבדים אותו כדי לתת לכם את השירות.</p></div></details>
-  <details><summary>ניתוק זה לא מחיקה</summary><div class="in"><p>בלשונם: <span class="ltr">disconnecting a third-party integration does not automatically delete data</span>. את המחיקה עושים בנפרד, בלשונית "יציאה".</p></div></details>
-  <details><summary>מה שהוא עושה בשמכם מחייב אתכם</summary><div class="in"><p>בתנאים אתם ממנים אותו כסוכן שלכם להסכמים ולעסקאות, וכל מה שהוא נכנס אליו מחייב אתכם. הם עצמם מזהירים שהוא עלול לשלם או לשלוח הודעה בטעות, או ליפול להוראה זדונית שמסתתרת בתוך מייל.</p></div></details>
-  <details><summary>למה לא להירשם עם המייל של העבודה</summary><div class="in"><p>מי שנרשם בשם חברה מצהיר שיש לו סמכות לחייב אותה, והחברה הופכת לצד להסכם.</p></div></details>
-  <details><summary>מה הם אוספים לבד</summary><div class="in"><p>הקשות, קליקים ותנועת עכבר, ומיקום מדויק אם מאשרים. בשביל המשימות כאן לא צריך לאשר מיקום.</p></div></details>
-  <details><summary>חשבון וסכסוכים</summary><div class="in"><p>הם יכולים להשעות או למחוק חשבון גם בלי להודיע. סכסוך הולך כברירת מחדל לבוררות אישית, ולפי סעיף 10 אפשר לבקש לצאת מזה בתוך 30 יום, עם כמה חריגים.</p></div></details>
-  <details><summary>בטא סגורה</summary><div class="in"><p>יש בתנאים אזהרה על אובדן מידע, ודברים יכולים להשתנות או להפסיק לעבוד. יש גם סעיף שאוסר לפרסם תוכן על בטא סגורה בלי אישור שלהם, כשהם הודיעו לכם שאתם בבטא כזו.</p></div></details>
+    <p>לפי <a href="https://instinct.com/privacy-policy" target="_blank" rel="noopener">מדיניות הפרטיות</a> ו<a href="https://instinct.com/terms" target="_blank" rel="noopener">תנאי השימוש</a> בגרסה מ-17.11.2026. אני לא עורך דין, אז מי שזה קריטי לו שיקרא בעצמו. יש שאלה ספציפית? בלשונית הבאה יש סוכן פרטיות.</p></div>
+  <div class="note info"><b>שתי המסמכים עודכנו ב-17.11.2026</b><p>המדיניות ארוכה עכשיו בערך פי 2, בעיקר בגלל סעיפים לאירופה, לארה"ב ולהודו. נוספו פרקים על כמה זמן שומרים מידע, על העברה לארה"ב ועל זכויות. פרק האזהרות על פעולות בטעות ירד מהמדיניות, ובתנאים נוספה במקומו חובה לפקח על כל פעולה שלו.</p></div>
+  <details open><summary>אימון על המידע שלכם</summary><div class="in"><p>כברירת מחדל המידע שלכם משמש לאימון, ואפשר לכבות את זה ב-<span class="ltr">app.instinct.com/settings</span>. הכיבוי חל רק מכאן והלאה, ומשהו שסומן לבדיקת בטיחות עדיין יכול להיכנס לאימון. מה שמכניסים ל-Vault לא משמש לאימון.</p></div></details>
+  <details><summary>מה עם המידע מגוגל</summary><div class="in"><p>מה שמגיע דרך Google Workspace לא נכנס לאימון, לא משמש לפרסום ולא נמכר. אם מנתקים את גוגל, הם מפסיקים לשמור את המידע ממנו, חוץ ממה שהחוק מחייב.</p></div></details>
+  <details><summary>ניתוק של חיבור אחר זה לא מחיקה</summary><div class="in"><p>בחיבורים שהם לא גוגל, המידע שכבר נאסף נשאר אצלם, כולל היסטוריית השיחה. מחיקה מבקשים במייל ל-<span class="ltr">privacy@instinct.com</span>.</p></div></details>
+  <details><summary>כמה זמן שומרים</summary><div class="in"><p>"כל עוד נדרש באופן סביר". אחרי בקשה למחוק את החשבון, המחיקה לוקחת עד 90 יום. חלק נשאר גם אחר כך: מידע שנוטרל ממנו הזיהוי, מידע של תשלומים, וחשבון שנחסם או שיש עליו חובה משפטית.</p></div></details>
+  <details><summary>מה הם אוספים</summary><div class="in"><p>מה שאתם נותנים: שם, טלפון, מייל, יום הולדת, מגדר, וכל קובץ, תמונה או הקלטה ששלחתם. מה שהוא רואה דרך החיבורים. ובאופן אוטומטי: קליקים, זמן בדפים, מיקום משוער, מכשיר ודפדפן. מיקום מדויק רק אם מאשרים, ואין סיבה לאשר.</p></div></details>
+  <details><summary>מידע על אנשים אחרים</summary><div class="in"><p>אם אתם נותנים לו פרטים של אנשים אחרים, אתם אלה שמחליטים מה ייעשה בהם, והאחריות עליכם.</p></div></details>
+  <details><summary>מי עוד רואה את המידע</summary><div class="in"><p>ספקי שירות, ספקי מודלי AI, מי שהוא פונה אליהם בשמכם, חברות קשורות, צד בעסקת מיזוג או רכישה, יועצים, ורשויות לפי חוק. המידע עובר לארה"ב.</p></div></details>
+  <details><summary>מה שהוא עושה בשמכם מחייב אתכם</summary><div class="in"><p>בתנאים כתוב שההתחייבויות שהוא נכנס אליהן בשמכם <span class="ltr">"shall be binding on you"</span>, ושחובה עליכם לפקח על כל פעולה שלו ולבדוק אותה.</p></div></details>
+  <details><summary>יש לו דפדפן</summary><div class="in"><p>הוא יכול לפעול בשמכם גם באתרים שלא חיברתם אליו. לכן כדאי לכתוב לו במפורש מה מותר לו.</p></div></details>
+  <details><summary>הזכויות שלכם</summary><div class="in"><p>עיון, מחיקה, תיקון, העברה, הגבלה, התנגדות והסרה משיווק, לפי החוק במקום שבו אתם גרים. פונים ל-<span class="ltr">privacy@instinct.com</span>.</p></div></details>
+  <details><summary>חשבון וסכסוכים</summary><div class="in"><p>הם יכולים להשעות או למחוק חשבון גם בלי להודיע. סכסוך הולך כברירת מחדל לבוררות אישית, ואפשר לבקש לצאת מזה בתוך 30 יום מההרשמה.</p></div></details>
+  <details><summary>גישה מוקדמת</summary><div class="in"><p>בתנאים יש סעיף על "Early Access Offerings": פיצ'רים או מוצרים בגישה מוקדמת, על בסיס חסוי. מי שקיבל גישה כזו לא מפרסם עליה תוכן בלי אישור בכתב מהם.</p></div></details>
+</section>
+
+
+<!-- ask -->
+<section class="panel" id="ask" data-title="סוכן הפרטיות" role="tabpanel">
+  <div class="panel-head"><span class="k">שלב 9 · סוכן הפרטיות</span><h2>שאלו את סוכן הפרטיות</h2>
+    <p>התשובות כאן כתובות לפי <a href="https://instinct.com/privacy-policy" target="_blank" rel="noopener">מדיניות הפרטיות של Instinct</a> בגרסה מ-17.11.2026, ולפי ההנחיות של הסוכן שבניתי. לכל תשובה יש סיווג: מותר, כדאי, לא כדאי או לא מכוסה. זו פרשנות של מסמך, לא ייעוץ משפטי.</p></div>
+  <div class="askbar">
+    <label for="q" class="sr">חיפוש שאלה</label>
+    <input id="q" type="search" placeholder="למשל: ג'ימייל, אימון, מחיקה, כרטיס אשראי" autocomplete="off">
+    <div class="filters" role="group" aria-label="סינון לפי סיווג" id="askf">
+      <button aria-pressed="true" data-k="all">הכול</button>
+      <button aria-pressed="false" data-k="מותר">מותר</button>
+      <button aria-pressed="false" data-k="כדאי">כדאי</button>
+      <button aria-pressed="false" data-k="לא כדאי">לא כדאי</button>
+      <button aria-pressed="false" data-k="לא מכוסה">לא מכוסה</button>
+    </div>
+  </div>
+  <div id="qa" class="qa"></div>
+  <p id="qaEmpty" class="note info" hidden><b>לא מצאתי שאלה כזו</b>אפשר להעתיק את הסוכן, למטה, ולשאול אותו בצ'אט שלכם.</p>
+
+  <div class="box copyagent">
+    <h3>🤖 העתיקו את הסוכן לצ'אט שלכם</h3>
+    <p>יש לכם שאלה שלא מופיעה כאן? מעתיקים את ההנחיות, מדביקים אותן כהודעה ראשונה ב-ChatGPT, ב-Claude או ב-Gemini, ואז שואלים. הסוכן מתבסס על המדיניות בקישור <span class="ltr">instinct.com/privacy-policy</span>.</p>
+    <button class="btn primary" id="copyAgent">העתקת ההנחיות</button>
+    <details style="margin-top:12px"><summary>להציג את ההנחיות</summary><div class="in"><pre id="agentText" class="agentpre"></pre></div></details>
+  </div>
 </section>
 
 <!-- 9 -->
 <section class="panel" id="advanced" data-title="למתקדמים" role="tabpanel">
-  <div class="panel-head"><span class="k">שלב 9 · למתקדמים</span><h2>מה עוד הוא אמור לדעת</h2>
+  <div class="panel-head"><span class="k">שלב 10 · למתקדמים</span><h2>מה עוד הוא אמור לדעת</h2>
     <p>את זה לא בדקתי. הכול לקוח מראיון עם המייסד, Noah Shinn, ומכתבה ב-TechCrunch. הייתי מחכה עם זה לפחות שבוע של משימות פשוטות, ותמיד עם שורת הבלם.</p></div>
   <div class="cols">
     <div class="box"><h3>🕵️ מעקב ממושך</h3><p>בדוגמה מהראיון הוא עבד כ-18 שעות מול אנשי האירוע ושירות הלקוחות, עד שהשיג סרטון ממשחק.</p></div>
@@ -378,12 +422,12 @@ footer{max-width:1120px;margin:0 auto;padding-block:20px 50px;color:var(--muted)
 
 <!-- 10 -->
 <section class="panel" id="exit" data-title="יציאה" role="tabpanel">
-  <div class="panel-head"><span class="k">שלב 10 · יציאה</span><h2>ואם רוצים לצאת</h2>
-    <p>קודם מוחקים, ורק אחר כך מנתקים. ניתוק לבד משאיר את המידע אצלם.</p></div>
+  <div class="panel-head"><span class="k">שלב 11 · יציאה</span><h2>ואם רוצים לצאת</h2>
+    <p>לפי המדיניות מ-17.11: ניתוק של גוגל מפסיק את שמירת המידע ממנו. בשאר החיבורים, ניתוק לבד משאיר את המידע אצלם.</p></div>
   <ol class="rule-list">
-    <li><div><b>נכנסים ל-<span class="ltr">app.instinct.com/workspace</span></b>שם מופיעים כל החיבורים.</div></li>
-    <li><div><b>מוחקים את המידע</b>יש כפתור Delete ליד <span class="ltr">External data</span>.</div></li>
-    <li><div><b>מנתקים את החיבורים</b>רק אחרי המחיקה.</div></li>
+    <li><div><b>מנתקים את החיבורים</b>ב-<span class="ltr">app.instinct.com/workspace</span>.</div></li>
+    <li><div><b>מבקשים מחיקה</b>במייל ל-<span class="ltr">privacy@instinct.com</span>, על המידע מהחיבורים שאינם גוגל, או על כל החשבון.</div></li>
+    <li><div><b>מוחקים את החשבון</b>לפי המדיניות, המחיקה לוקחת עד 90 יום, וחלק מהמידע נשאר גם אחר כך.</div></li>
     <li><div><b>המספר והג'ימייל</b>נשארים שלכם. אפשר למחוק אותם או להשאיר.</div></li>
   </ol>
   <div class="note go" style="margin-top:26px"><b>נסו שבוע ותכתבו לי</b><p>זה חינם. מה שראיתי אצלי בשבועיים יכול להיראות אחרת אצלכם, אז נסו שבוע ותכתבו לי בקבוצה מה עבד לכם ומה לא 🙌</p></div>
@@ -392,7 +436,7 @@ footer{max-width:1120px;margin:0 auto;padding-block:20px 50px;color:var(--muted)
 <div class="nav-bottom"><button class="prev" id="prev">→ הקודם</button><button class="next" id="next">הבא ←</button></div>
 </main>
 
-<footer class="pad">המדריך מבוסס על שבועיים של שימוש שלי ב-Instinct, בנובמבר 2026, ועל תנאי השימוש ומדיניות הפרטיות בגרסה מ-26.8.2026. השירות בבטא ומשתנה, אז ייתכן שחלק מהמסכים כבר נראים אחרת.</footer>
+<footer class="pad">המדריך מבוסס על שבועיים של שימוש שלי ב-Instinct, בנובמבר 2026, ועל תנאי השימוש ומדיניות הפרטיות בגרסה מ-17.11.2026. השירות בבטא ומשתנה, אז ייתכן שחלק מהמסכים כבר נראים אחרת.</footer>
 
 <script>
 const GROUP_URL = "https://chat.whatsapp.com/BaiRSw1nTdrJPzkJ2DsIkw"; // קישור לקבוצת ההזמנות
@@ -462,6 +506,101 @@ const GROUP_URL = "https://chat.whatsapp.com/BaiRSw1nTdrJPzkJ2DsIkw"; // קיש�
   dots.forEach((d,i)=>{const set=v=>{d.setAttribute('aria-pressed',v);d.closest('.step').classList.toggle('done',v);d.textContent=v?'✓':String(i+1)};
     set(!!st[i]);d.addEventListener('click',()=>{const v=d.getAttribute('aria-pressed')!=='true';set(v);st[i]=v;try{localStorage.setItem(KEY,JSON.stringify(st))}catch(_){}upd()})});
   upd();
+})();
+const QA=[
+{q:"אפשר לחבר את הג'ימייל שלי?",k:"מותר",f:"סעיף Information collected from Google Workspace: מידע מגוגל משמש לתת את השירות ולפעול בשמכם. לפי המדיניות הוא לא משמש לאימון מודלים ולא לפרסום.",r:"לחבר רק את הג'ימייל הנפרד שפתחתם בשבילו, ולא את המייל הראשי.",g:"ספקי המודלים מעבדים את המידע הזה מטעמם כדי לתת את השירות. מי הספקים, לא כתוב."},
+{q:"אפשר לחבר את המייל של העבודה, או Outlook?",k:"לא כדאי",f:"ההגנות המיוחדות במדיניות כתובות רק לגוגל. על שאר החיבורים (Connected Services) כתוב שהמידע שנאסף נשמר גם אחרי ניתוק.",r:"לא לחבר מייל של עבודה. אם נרשמים בשם חברה, לפי תנאי השימוש ההתחייבויות חלות גם עליה.",g:"Outlook לא מוזכר בשמו במדיניות."},
+{q:"המידע שלי משמש לאימון ה-AI?",k:"כדאי",f:"סעיף Opt out of model training: כן, כברירת מחדל. מכבים ב-app.instinct.com/settings.",r:"לכבות ביום הראשון, לפני ההודעה הראשונה.",g:"גם אחרי כיבוי, מידע שסומן לבדיקת בטיחות יכול להיכנס לאימון. הכיבוי חל רק מכאן והלאה, ומודלים שכבר אומנו על המידע נשארים."},
+{q:"מה שאני שם ב-Vault משמש לאימון?",k:"מותר",f:"סעיף Opt out of model training: מידע ב-Vault משמש רק כדי לתת לכם את השירות, ולא לאימון.",r:"אם יש משהו שהוא חייב לדעת לאורך זמן, Vault עדיף על הודעה רגילה.",g:""},
+{q:"כמה זמן שומרים את המידע שלי?",k:"לא מכוסה",f:"סעיף Data retention: \"for as long as is reasonably necessary\". אין מספר ימים כללי. מחיקת חשבון לוקחת עד 90 יום.",r:"מי שרוצה תשובה מדויקת לסוג מידע מסוים, שיכתוב ל-privacy@instinct.com.",g:"תקופה מדויקת לכל סוג מידע לא כתובה."},
+{q:"אם אמחק את החשבון, הכול נמחק?",k:"לא מכוסה",f:"סעיף Data retention: המחיקה לוקחת עד 90 יום. מידע שנוטרל ממנו הזיהוי יכול להישאר, וגם מידע של תשלומים, הליכים משפטיים או חשבון שנחסם.",r:"לפני מחיקה, לנתק את החיבורים. לבקש אישור מחיקה ב-privacy@instinct.com.",g:"אין פירוט מה בדיוק נשאר אחרי 90 יום."},
+{q:"ניתקתי חיבור. המידע נמחק?",k:"כדאי",f:"סעיף Information from third party platforms: בגוגל, אחרי ניתוק הם מפסיקים לשמור ולהשתמש במידע. בשאר החיבורים המידע שכבר נאסף נשאר, כולל היסטוריית השיחה.",r:"בחיבור שאינו גוגל, לבקש מחיקה במייל ל-privacy@instinct.com.",g:""},
+{q:"אפשר לתת לו את כרטיס האשראי שלי?",k:"לא כדאי",f:"סעיף How we use: הוא יכול לבצע רכישות והזמנות בבקשתכם. בתנאי השימוש כתוב שההתחייבויות שהוא נכנס אליהן בשמכם מחייבות אתכם.",r:"בלי כרטיס אשראי. אם חייבים, כרטיס וירטואלי עם תקרה נמוכה, ושורת הבלם.",g:""},
+{q:"אפשר לתת לו סיסמה של חשבון אחר?",k:"לא כדאי",f:"סעיף U.S. states, Sensitive personal information: פרטי התחברות לחשבונות נספרים אצלם כמידע רגיש.",r:"לא לתת סיסמאות ולא לחבר מנהל סיסמאות.",g:""},
+{q:"אפשר לשתף אותו במידע רפואי?",k:"לא כדאי",f:"סעיף Information collected through your use: מידע כזה נחשב רגיש. הדוגמה שלהם: אלרגיה שאתם מזכירים כשהוא מזמין לכם מסעדה.",r:"לשתף רק מה שהמשימה חייבת.",g:""},
+{q:"אפשר לספר לו על אנשים אחרים?",k:"לא כדאי",f:"בפתיחה של המדיניות: כשאתם נותנים לו מידע על אנשים אחרים, אתם אלה שמחליטים איך המידע ישמש, ואתם האחראים לו.",r:"לא להעביר אליו פרטים של לקוחות, עובדים או חברים בלי צורך.",g:"מה זה אומר משפטית תלוי בחוק המקומי."},
+{q:"הם מוכרים את המידע שלי?",k:"מותר",f:"בסעיף של ארה\"ב כתוב שהם לא מוכרים מידע אישי ולא משתמשים בו לפרסום ממוקד. על מידע מגוגל כתוב שהם לא מעבירים ולא מוכרים אותו.",r:"להשתמש, אבל לזכור שהמידע כן מועבר לספקים, כמו בשאלה הבאה.",g:"בגרסה הקודמת זה נכתב כעיקרון כללי. בגרסה מ-17.11 זה מופיע בסעיף של ארה\"ב ובסעיף של גוגל."},
+{q:"מי עוד רואה את המידע שלי?",k:"לא כדאי",f:"סעיף How we disclose: ספקי שירות, ספקי מודלי AI, חברות קשורות, צדדים שהוא פונה אליהם בשמכם, צד בעסקת מיזוג או רכישה, יועצים מקצועיים, ורשויות לפי חוק.",r:"לא לשים אצלו מידע שלא הייתם רוצים שספק חיצוני יראה.",g:"שמות ספקי ה-AI לא מופיעים."},
+{q:"איפה נשמר המידע?",k:"לא מכוסה",f:"סעיף Data transfers: החברה בארה\"ב. מידע של משתמשים מחוץ לארה\"ב מועבר לארה\"ב או למדינות אחרות.",r:"מי שצריך את מנגנון ההעברה, יכול לבקש אותו ב-privacy@instinct.com.",g:"באילו מדינות בדיוק, לא כתוב."},
+{q:"הוא אוסף את המיקום שלי?",k:"לא כדאי",f:"סעיף Information we collect automatically: מיקום משוער נאסף תמיד, ומיקום מדויק רק אם אתם משתפים.",r:"לא לאשר מיקום מדויק. בשביל משימות של תזכורות ומחקר הוא לא צריך אותו.",g:""},
+{q:"מה הם אוספים בלי שאבקש?",k:"לא מכוסה",f:"סעיף Information we collect automatically: קליקים וזמן בדפים, מיקום משוער, כתובת IP, סוג המכשיר והדפדפן, ועוגיות.",r:"לדעת שזה קורה. אפשר לחסום עוגיות בדפדפן, אבל חלק מהאתר עלול לא לעבוד.",g:"הקשות מקלדת הופיעו בגרסה מ-26.8, ובגרסה מ-17.11 הן כבר לא ברשימה."},
+{q:"הוא יכול להיכנס לאתרים שלא חיברתי?",k:"לא כדאי",f:"סעיף Information from third party platforms: יש לו דפדפן, והוא יכול לפעול בשמכם גם באתרים שלא חיברתם.",r:"לכתוב לו במפורש מה מותר ומה לא, ולשלוח את שורת הבלם.",g:""},
+{q:"מה אם הוא עשה פעולה בטעות?",k:"כדאי",f:"סעיף Automated decision-making: אתם מכוונים אותו ואחראים לשימוש. בתנאי השימוש כתוב שחובה לשמור על פיקוח אנושי ולבדוק כל פעולה שלו.",r:"לבדוק כל פעולה שלו, ולבקש טיוטה לפני שליחה, תשלום או התחייבות.",g:""},
+{q:"אפשר להוסיף אותו לקבוצת וואטסאפ?",k:"לא כדאי",f:"לפי תנאי השימוש, Group chats: הוא מקבל גישה לכל מה שנכתב בקבוצה, ואתם אחראים לקבל רשות מהמשתתפים.",r:"לא להוסיף אותו לקבוצה בלי לשאול את החברים בה.",g:"זה מתנאי השימוש, לא ממדיניות הפרטיות."},
+{q:"הוא ישלח לי פרסומות?",k:"מותר",f:"סעיף How we use: הם רשאים לשלוח שיווק. סעיף Opt Out of Marketing: אפשר להסיר את עצמכם דרך הקישור שבהודעה.",r:"להסיר את עצמכם אם זה מפריע. הודעות שירות ימשיכו להגיע.",g:""},
+{q:"אילו זכויות יש לי על המידע?",k:"מותר",f:"סעיף Rights under applicable law: אפשר לבקש עיון, מחיקה, תיקון, העברה, הגבלת עיבוד והתנגדות, לפי החוק במקום שבו אתם גרים.",r:"פונים ל-privacy@instinct.com. הם יכולים לבקש לאמת את הזהות שלכם.",g:"אילו מהזכויות חלות בישראל, המדיניות לא אומרת. זו שאלה של החוק המקומי, ולא ייעוץ משפטי."},
+{q:"אפשר לתת לילד להשתמש בו?",k:"לא כדאי",f:"סעיף Children's privacy: השירות לא מיועד לילדים. הורה יכול לבקש מחיקה ב-privacy@instinct.com.",r:"לא לפתוח חשבון לילד.",g:"הגרסה החדשה לא מציינת גיל."},
+{q:"מה קורה כשהמדיניות משתנה?",k:"כדאי",f:"סעיף Changes: בשינוי מהותי הם מודיעים בהודעה בשירות או במייל שנרשמתם איתו.",r:"לבדוק מדי פעם את המייל שפתחתם בשבילו. המדיניות כבר עודכנה פעם אחת, ב-17.11.2026.",g:""},
+{q:"אפשר לסמוך עליו בעצה משפטית, רפואית או כספית?",k:"לא כדאי",f:"בגרסה מ-26.8 נכתב שהוא לא יועץ מקצועי. בגרסה מ-17.11 המשפט הזה לא מופיע במדיניות הפרטיות.",r:"להתייחס לתשובות שלו כטיוטה, ולבדוק עם בעל מקצוע.",g:"לא בדקתי אם המשפט עבר לתנאי השימוש."}
+];
+const AGENT=`# סוכן מדיניות הפרטיות של אינסטינקט (Instinct)
+
+תענה על שאלות לגבי מה מותר, מה כדאי ומה לא כדאי בשימוש באינסטינקט (Spear Street Technology, Inc.), לפי מדיניות הפרטיות שלה בלבד. הגרסה בבסיס הידע מעודכנת ל-17.11.2026. מקור: https://instinct.com/privacy-policy
+
+## כללי עבודה
+
+1. תפתח כל תשובה בניתוח עצמו, בלי פתיחים ובלי סיומות.
+2. תסווג כל תשובה: מותר, כדאי, לא כדאי או לא מכוסה.
+3. תצטט את שם הסעיף הרלוונטי. ציטוט ישיר אחד קצר לכל היותר, את השאר תנסח במילים שלך.
+4. תפריד בין עובדה מהמדיניות לבין המלצה.
+5. אם חסר פרט שמשנה את התשובה, תשאל שאלה אחת קצרה לפני שתענה.
+6. כשיש אי ודאות או פער, תפנה ל-privacy@instinct.com.
+7. זו פרשנות של מסמך ולא ייעוץ משפטי. תציין זאת רק כששאלה נוגעת לזכויות חוקיות, תביעות או חוק מקומי.
+8. תשיב בשפה שבה נשאלת.
+9. אל תמציא סעיפים, תקופות שמירה, מספרים או שמות ספקים.
+10. אם המשתמש מבקש דיוק משפטי, תביא את הטקסט המלא של המדיניות מהקישור לפני שתענה.
+
+## בסיס ידע (גרסה 17.11.2026)
+
+- מפעיל: Spear Street Technology, Inc. חל על האתר, על העוזר Instinct ועל הפעולות שהוא מבצע בשמך באתרים ובשירותים של צד שלישי.
+- אחריות: כשנותנים ל-Instinct מידע על אנשים אחרים, המשתמש מחליט איך הוא ישמש ואחראי לו.
+- מידע שהמשתמש מספק: שם, טלפון, מייל, יום הולדת, מגדר, פרטי תשלום (דרך מעבד חיצוני), ותוכן: טקסט, קבצים, תמונות, אודיו ווידאו.
+- מידע מהשימוש: תוכן שהעוזר ניגש אליו לפי ההרשאות, כולל הודעות ומיילים. אודיו וקול אם מפעילים. מידע רגיש אפשרי, למשל בריאות או דת.
+- חיבורים (Connected Services): יש לו גם דפדפן שפועל באתרים שלא חוברו. ניתוק עוצר קבלת מידע. בגוגל, אחרי ניתוק לא שומרים ולא משתמשים במידע, חוץ ממה שהחוק מחייב. בשאר החיבורים מה שנאסף נשאר, כולל היסטוריית השיחה. מחיקה מבקשים ב-privacy@instinct.com.
+- Google Workspace: לא לאימון, לא לפרסום ולא למכירה. ספקי AI מעבדים אותו רק מטעמם.
+- מידע אוטומטי: קליקים וזמן בדפים, מיקום משוער, ומיקום מדויק רק אם משתפים. לוגים, מכשיר, רשת ועוגיות.
+- אימון: כברירת מחדל כן. אפשר לבטל ב-app.instinct.com/settings. מידע שסומן לבדיקת בטיחות עשוי לשמש גם אחרי ביטול. הביטול חל מכאן והלאה. Vault לא משמש לאימון.
+- שימושים: גם שיווק, עם אפשרות הסרה.
+- גילוי: ספקי שירות, ספקי מודלי AI, צדדים שהוא פונה אליהם בשמך, חברות קשורות, עסקאות תאגידיות, יועצים, ורשויות לפי חוק.
+- שמירה: "כל עוד נדרש באופן סביר". מחיקת חשבון: עד 90 יום. נשמר יותר: מידע מנוטרל, תשלומים, חשבון שנחסם, חובה משפטית.
+- העברה: המידע מועבר לארה"ב או למדינות אחרות.
+- זכויות: עיון, מחיקה, תיקון, העברה, הגבלה, התנגדות, הסרה משיווק וביטול הסכמה, לפי החוק המקומי, דרך privacy@instinct.com.
+- ילדים: לא מיועד לילדים. הורה יכול לבקש מחיקה.
+- החלטות אוטומטיות: המשתמש מכוון את Instinct ואחראי לשימוש בו ובתוצרים.
+- שינויים: בשינוי מהותי מודיעים בשירות או במייל.
+- לא מוכרים מידע אישי ולא משתמשים בו לפרסום ממוקד (בסעיף של ארה"ב).
+- קשר: privacy@instinct.com
+
+## פורמט תשובה
+
+סיווג: מותר / כדאי / לא כדאי / לא מכוסה
+עובדה מהמדיניות: [סעיף + ניסוח קצר]
+המלצה: [מה לעשות ולמה]
+פער או אי ודאות: [אם יש]
+
+## דוגמה
+
+שאלה: כמה זמן שומרים את ההודעות שלי ?
+סיווג: לא מכוסה
+עובדה מהמדיניות: סעיף Data retention: שומרים "כל עוד נדרש באופן סביר". מחיקת חשבון לוקחת עד 90 יום.
+המלצה: לתקופה מדויקת, לפנות ל-privacy@instinct.com.`;
+
+(function(){
+  const box=document.getElementById('qa'),q=document.getElementById('q'),empty=document.getElementById('qaEmpty');
+  const cls={'מותר':'k-allow','כדאי':'k-good','לא כדאי':'k-no','לא מכוסה':'k-na'};let kf='all';
+  QA.forEach(x=>{const d=document.createElement('details');d.dataset.k=x.k;d.dataset.t=(x.q+' '+x.f+' '+x.r+' '+x.g).toLowerCase();
+    d.innerHTML='<summary><span><span class="qq"></span><span class="kk"></span></span></summary><div class="in"><p><b>סיווג:</b> <span class="c1"></span></p><p><b>עובדה מהמדיניות:</b> <span class="c2"></span></p><p><b>המלצה:</b> <span class="c3"></span></p><p class="gp"><b>פער או אי ודאות:</b> <span class="c4"></span></p></div>';
+    d.querySelector('.qq').textContent=x.q;const kk=d.querySelector('.kk');kk.textContent=x.k;kk.classList.add(cls[x.k]);
+    d.querySelector('.c1').textContent=x.k;d.querySelector('.c2').textContent=x.f;d.querySelector('.c3').textContent=x.r;
+    if(x.g)d.querySelector('.c4').textContent=x.g;else d.querySelector('.gp').remove();box.appendChild(d)});
+  const run=()=>{const v=q.value.trim().toLowerCase();let n=0;box.querySelectorAll('details').forEach(d=>{const ok=(kf==='all'||d.dataset.k===kf)&&(!v||v.split(/\s+/).every(w=>d.dataset.t.includes(w)));d.hidden=!ok;if(ok)n++});empty.hidden=n>0};
+  q.addEventListener('input',run);
+  document.querySelectorAll('#askf button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('#askf button').forEach(o=>o.setAttribute('aria-pressed',o===b));kf=b.dataset.k;run()}));
+  document.getElementById('agentText').textContent=AGENT;
+  const cb=document.getElementById('copyAgent');
+  cb.addEventListener('click',()=>{const ok=()=>{cb.textContent='הועתק ✓';setTimeout(()=>cb.textContent='העתקת ההנחיות',1800)};
+    const fb=()=>{const p=document.getElementById('agentText');p.closest('details').open=true;const r=document.createRange();r.selectNodeContents(p);const s=getSelection();s.removeAllRanges();s.addRange(r);cb.textContent='סומן, העתיקו ידנית'};
+    try{navigator.clipboard.writeText(AGENT).then(ok,fb)}catch(_){fb()}});
 })();
 </script>
 </body>
